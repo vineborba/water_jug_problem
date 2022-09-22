@@ -1,0 +1,56 @@
+14 16 15
+3 1 1
+4 0 1
+Movimentos:
+17 29 22
+1 17 9
+0 10 17
+Movimentos:
+24 26 12
+3 12 8
+12 0 11
+Movimentos:
+22 12 25
+17 9 9
+18 0 17
+Movimentos:
+21 12 10
+12 9 3
+19 0 5
+Movimentos:
+21 13 10
+18 2 9
+9 10 10
+Movimentos:
+20 12 23
+1 2 1
+0 0 4
+Movimentos:
+18 16 17
+12 11 1
+1 6 17
+Movimentos:
+29 10 20
+22 5 11
+18 0 20
+Movimentos:
+19 17 13
+13 4 3
+18 0 2
+Movimentos:
+14 24 17
+4 1 16
+6 0 15
+Movimentos:
+26 11 15
+5 10 10
+24 0 1
+Movimentos:
+19 28 12
+16 2 3
+0 18 3
+Movimentos:
+13 16 10
+6 12 0
+12 0 6
+Movimentos:
