@@ -120,7 +120,7 @@ pub fn run(config: &Config) -> Result<(), Box<dyn Error>> {
         if round.movements > 0 {
             writeln!(&mut file, "{}", round)?;
         } else {
-            println!("Round inválido");
+            println!("Configuração inválida");
         }
     }
     Ok(())
