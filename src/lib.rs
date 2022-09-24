@@ -86,7 +86,7 @@ pub fn run(config: &Config) -> Result<(), Box<dyn Error>> {
         .open(&config.output_file)?;
 
     for mut round in test_rounds {
-        let jugs: Vec<Jug> = initialize_jugs(&round);
+        let jugs = initialize_jugs(&round);
         let jugs_lenght = jugs.len();
 
         let mut calculated_values: HashSet<Vec<i32>> = HashSet::new();
@@ -98,14 +98,14 @@ pub fn run(config: &Config) -> Result<(), Box<dyn Error>> {
 
         'counter: while q.size() != 0 {
             let current_movement = q.remove()?;
-            for i in 0..jugs_lenght {
-                for j in 0..jugs_lenght {
-                    if i == j {
+            for from in 0..jugs_lenght {
+                for to in 0..jugs_lenght {
+                    if from == to {
                         continue;
                     }
 
                     let mut new_movement = current_movement.clone();
-                    pour(&mut new_movement.state, i, j);
+                    pour(&mut new_movement.state, from, to);
                     new_movement.counter += 1;
 
                     let current_volumes: Vec<i32> =
@@ -173,15 +173,15 @@ fn initialize_jugs(round: &Round) -> Vec<Jug> {
     jugs
 }
 
-fn pour(jugs: &mut Vec<Jug>, i: usize, j: usize) {
-    let mut new_current = jugs[i].current + jugs[j].current;
+fn pour(jugs: &mut Vec<Jug>, from: usize, to: usize) {
+    let mut new_current = jugs[from].current + jugs[to].current;
     let mut leftover = 0;
-    if new_current > jugs[j].capacity {
-        leftover = new_current - jugs[j].capacity;
-        new_current = jugs[j].capacity;
+    if new_current > jugs[to].capacity {
+        leftover = new_current - jugs[to].capacity;
+        new_current = jugs[to].capacity;
     }
-    jugs[i].current = leftover;
-    jugs[j].current = new_current;
+    jugs[from].current = leftover;
+    jugs[to].current = new_current;
 }
 
 fn vec_to_string(vec: &Vec<i32>) -> String {
@@ -192,7 +192,8 @@ fn vec_to_string(vec: &Vec<i32>) -> String {
 }
 
 fn compare_to_desired(current_volumes: &Vec<i32>, desired_volumes: &Vec<i32>) -> bool {
-    for i in 0..3 {
+    let iterations = current_volumes.len();
+    for i in 0..iterations {
         if current_volumes[i] != desired_volumes[i] {
             return false;
         }

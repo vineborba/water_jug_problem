@@ -1,0 +1,7 @@
+O programa foi escrito em Rust.
+
+Para compilar e rodar local é necessário ter instalado a toolchain da linguagem, encontrada em:
+https://www.rust-lang.org/pt-BR/tools/install
+
+Há um replit online onde o código pode ser executado, encontrado em:
+https://replit.com/@Esqu1l0/waterjugproblem
