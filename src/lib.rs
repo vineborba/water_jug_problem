@@ -32,10 +32,15 @@ impl fmt::Display for Round {
         let capacities_string = vec_to_string(&self.capacities);
         let initials_string = vec_to_string(&self.initial_volumes);
         let desireds_string = vec_to_string(&self.desired_volumes);
+        let moviments_string = if self.movements > 0 {
+            format!("Movimentos: {}", self.movements)
+        } else {
+            String::from("Movimentos: configuração inválida")
+        };
         write!(
             f,
-            "{}\n{}\n{}\nMovimentos: {}",
-            capacities_string, initials_string, desireds_string, self.movements
+            "{}\n{}\n{}\n{}",
+            capacities_string, initials_string, desireds_string, moviments_string
         )
     }
 }
@@ -117,11 +122,7 @@ pub fn run(config: &Config) -> Result<(), Box<dyn Error>> {
                 }
             }
         }
-        if round.movements > 0 {
-            writeln!(&mut file, "{}", round)?;
-        } else {
-            println!("Configuração inválida");
-        }
+        writeln!(&mut file, "{}", round)?;
     }
     Ok(())
 }
